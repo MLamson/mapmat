@@ -1,0 +1,14 @@
+{
+  "name": "mapmat",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "normalize-css": "~3.0.1",
+    "angular": "~1.3.14",
+    "angular-route": "~1.3.14",
+    "angular-cookies": "~1.3.14",
+    "materialize": "~0.95.3",
+    "leaflet": "~0.7.3",
+    "mapbox.js": "~2.1.5"
+  }
+}
