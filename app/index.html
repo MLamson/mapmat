@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="DayMap">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
@@ -8,7 +8,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
-    <link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.css" />            <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.css" /> <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="../bower_components/mapbox.js/mapbox.css" />
 
     <!-- endbower -->
@@ -20,13 +20,15 @@
   </head>
   <body>
 
-  <nav class="light-blue lighten-1" role="navigation">
+  <nav class="light-blue lighten-1" role="navigation" ng-controller="NavController">
     <div class="container">
       <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">Logo</a>
         <ul class="right">
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Register</a></li>
+          <li><a ng-hide="loggedin" href="#/login">Login</a></li>
+          <li><a ng-hide="loggedin" href="#/register">Register</a></li>
+          <li><a ng-show="loggedin" href="#/" ng-click="logout()">Logout</a></li>
         </ul>
+
 
         <ul id="nav-mobile" class="side-nav">
           <li><a href="#">Navbar Link</a></li>
@@ -35,57 +37,19 @@
       </div>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">Map My Day</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Map your day. Review your day. Share your day. </h5>
-      </div>
-     
+  
+
+
+  <div class="container" ng-view>
+  
+ 
+
+    
   </div>
 
+ <!--  <div id="map"></div> -->
 
-  <div class="container">
-    <div class="section">
 
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <img src="../images/atlantabg.png"></img>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <img src="../images/mobile.png"></img>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <img src="../images/atlantabg.png"></img>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br><br>
-
-    <div class="section">
-      <div id="map"></div>
-    </div>
-  </div>
 
   <footer class="page-footer orange">
     <div class="container">
@@ -124,20 +88,34 @@
   </footer>
 
 
-
+  
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
 
     <!-- Materialize.css bower components -->
-    <script src="../bower_components/materialize/dist/js/materialize.min.js"></script>
+    <script src="../bower_components/materialize/dist/js/materialize.js"></script>
     <script src="../bower_components/leaflet/dist/leaflet.js"></script>
     <script src="../bower_components/mapbox.js/mapbox.js"></script>
+
+      <!-- bower:js angular components-->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>
+
+        <script src="scripts/users/user.controller.js"></script>
+        <script src="scripts/users/user.factory.js"></script>
+
+        <script src="scripts/maps/map.controller.js"></script>
+        <script src="scripts/maps/map.factory.js"></script>
+
+
+        <script src="scripts/layout/nav.controller.js"></script>
         <!-- endbuild -->
 </body>
 </html>
