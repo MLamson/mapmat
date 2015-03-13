@@ -54,17 +54,17 @@ angular.module('DayMap', ['ngRoute', 'ngCookies'])
 
       });
 
-       $rootScope.$on('$routeChangeSuccess', function () {
+     //   $rootScope.$on('$routeChangeSuccess', function () {
 
-       	var location = $location.path();
+     //   	var location = $location.path();
 
-       	console.log(location, 'in routeChangeSuccess');
+     //   	console.log(location, 'in routeChangeSuccess');
 
-       	if(location === '/home') {
-       		MapFactory.render();
-       	}
+     //   	if(location === '/home') {
+     //   		MapFactory.render();
+     //   	}
        
-     });
+     // });
 
      
    }

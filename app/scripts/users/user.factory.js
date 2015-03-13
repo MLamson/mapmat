@@ -39,7 +39,7 @@
           headers: PARSE.CONFIG.headers,
           params: userObj
         }).then (function (res) {
-          console.log(res);
+          
           $cookieStore.put('currentUser', res.data);
         });
         $location.path('/home');
