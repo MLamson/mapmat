@@ -10,6 +10,7 @@
     "materialize": "~0.95.3",
     "leaflet": "~0.7.3",
     "mapbox.js": "~2.1.5",
-    "angular-google-maps": "~2.0.16"
+    "angular-google-maps": "~2.0.16",
+    "google-map": "GoogleWebComponents/google-map#~0.4.2"
   }
 }
