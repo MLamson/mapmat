@@ -4,85 +4,38 @@
 
   angular.module('DayMap')
 
-  .factory('MapFactory', ['$http', 'PARSE', '$cookieStore', '$location',
+  .factory('MapFactory', ['$http', 'PARSE', '$cookieStore', '$location','uiGmapGoogleMapApi', 
 
-    function ($http, PARSE, $cookieStore, $location) {
+    function ($http, PARSE, $cookieStore, $location, uiGmapGoogleMapApi) {
 
-      var renderMap = function () {
+      
 
-        var map = L.map('map').setView([43.093697, -78.876879], 13, { zoomControl:false });
+      var getTheDay = function (d) {
+        //console.log(d, 'in get day function');
+        ////loop over d.tracks getting mode and track
+//////////////////////////////////////////////////////////////////
+///////loop through object to get mode
+        // console.log(d.tracks, 'd tracks');
+      
+///////for each mode loop through tracks to get lat long
+///////create marker for each with idKey
 
-        L.tileLayer('https://{s}.tiles.mapbox.com/v4/{mapId}/{z}/{x}/{y}.png?access_token={token}', {
-            //attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            //subdomains: ['a','b','c','d'],
-            zoomControl : false,
-            mapId: 'mlamson.lc66lkk4',
-            token: 'pk.eyJ1IjoibWxhbXNvbiIsImEiOiJrR1lxejlZIn0.jNQ5v-SlOw7pzRjDgVRVhQ'
-        }).addTo(map);
-        map.touchZoom.disable();
-        map.doubleClickZoom.disable();
-        map.scrollWheelZoom.disable();
-        map.boxZoom.disable();
-        map.keyboard.disable();
-        L.mapbox.accessToken = 'pk.eyJ1IjoibWxhbXNvbiIsImEiOiJrR1lxejlZIn0.jNQ5v-SlOw7pzRjDgVRVhQ';
-        L.mapbox.featureLayer('mlamson.lc66lkk4').addTo(map);
-        
       };
-    
-      // // Get Current User
-      // var currentUser = function () {
-      //   return $cookieStore.get('currentUser');
-      // };
 
-      // // Check User Status
-      // var checkLoginStatus = function () {
-      //   var user = currentUser();
-      //   if (user) {
-      //      PARSE.CONFIG.headers['X-PARSE-Session-Token'] = user.sessionToken;
-      //   }
-      // };
+      // Get Days data from Parse
 
-      // // Add a new User
-      // var addUser = function (userObj) {
-      //   $http.post(PARSE.URL + 'users', userObj, PARSE.CONFIG)
-      //     .then( function (res) {
-      //       console.log(res);
-      //     }
-      //   );
-      // };
-
-      // // Log in a User
-      // var loginUser = function (userObj) {
-
-      //   $http({
-      //     method: 'GET',
-      //     url: PARSE.URL + 'login',
-      //     headers: PARSE.CONFIG.headers,
-      //     params: userObj
-      //   }).then (function (res) {
-      //     console.log(res);
-      //     $cookieStore.put('currentUser', res.data);
-      //   });
-      //   $location.path('/home');
-        
-      // };
-
-      // // Logout Method
-      // var logoutUser = function () {
-      //   $cookieStore.remove('currentUser');
-      //   console.log('in logoutUser function UserFactory');
-      //   $location.path('/');
-        
-      // };
+      var getAllDays = function () {
+        return $http.get(PARSE.URL + 'classes/Day', {
+          headers: PARSE.CONFIG.headers,
+          cache: true
+        });
+      };
   
       return {
 
-        render : renderMap,
-        // register : addUser, 
-        // login : loginUser,
-        // user : currentUser,
-        // status : checkLoginStatus,
-        // logout : logoutUser
+      //  getOne : getDay,
+        getD : getTheDay,
+        get : getAllDays,
       };
 
     }
@@ -90,3 +43,4 @@
   ]);
 
 }());
+

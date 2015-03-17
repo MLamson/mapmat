@@ -19,27 +19,17 @@
 
   <div class="container">
     <div class="section">
- <!-- <div id="map"></div> -->
-  <div id="map_canvas" ng-controller="MapController">
+ <div id="map"></div>
 
- <!-- Add map to page -->
-      <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable='true' options="options" bounds='map.bounds'>
-   <!-- Add markers to page -->
-        <ui-gmap-markers models="trackMarkers" idKey="id" coords="'coords'" icon="'icon'">
-        </ui-gmap-markers>
-
-    <!-- Add marker to test how data is needed -->
-       
-     </ui-gmap-google-map>
-   
-  </div>
-
-    <ul class="days">
-      <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
-        <button ng-click="getDay(d)">Day</button>
-        <a href="#/home/{{ d.objectId }}">{{ d.objectId }}</a>
-      </li>  
-    </ul>
+ <ul class="days">
+  <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
+    <a href="/home/{{ d.objectId }}">{{ d.objectId }}</a> 
+    
+   <!--  <div ng-repeat="t in d.tracks">
+      {{ t.mode }}{{t.track}}
+    </div> -->
+  </li>  
+</ul>
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s12 m4">

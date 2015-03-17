@@ -8,9 +8,9 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
-    <link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.css" /> <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../bower_components/materialize/dist/css/materialize.css" /> <!-- <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="../bower_components/mapbox.js/mapbox.css" />
-
+ -->
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -41,8 +41,11 @@
 
 
   <div class="container" ng-view>
+
+
+  </div>   
+
   
- 
 
     
   </div>
@@ -87,7 +90,7 @@
     </div>
   </footer>
 
-
+    <!-- <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script> -->
   
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -95,18 +98,26 @@
 
     <!-- Materialize.css bower components -->
     <script src="../bower_components/materialize/dist/js/materialize.js"></script>
-    <script src="../bower_components/leaflet/dist/leaflet.js"></script>
-    <script src="../bower_components/mapbox.js/mapbox.js"></script>
+   <!--  <script src="../bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="../bower_components/mapbox.js/mapbox.js"></script> -->
 
       <!-- bower:js angular components-->
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="../bower_components/angular-route/angular-route.min.js"></script>
     <script src="../bower_components/angular-cookies/angular-cookies.min.js"></script>
+
+    <script src="../bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="../bower_components/lodash/dist/lodash.min.js"></script>
+
+   
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>
+
+        <script src="scripts/tracks/track.controller.js"></script>
+        <script src="scripts/tracks/track.factory.js"></script>
 
         <script src="scripts/users/user.controller.js"></script>
         <script src="scripts/users/user.factory.js"></script>

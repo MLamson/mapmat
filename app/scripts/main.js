@@ -1,7 +1,7 @@
 ;(function (){
 
 
-angular.module('DayMap', ['ngRoute', 'ngCookies'])
+angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps',])
 
 	.constant('PARSE', {
 		URL: 'https://api.parse.com/1/',
@@ -36,6 +36,11 @@ angular.module('DayMap', ['ngRoute', 'ngCookies'])
     .when('/home', {
       templateUrl: 'scripts/maps/map.home.tpl.html',
       controller: 'MapController'
+    })
+
+    .when('/home/:id', {
+      templateUrl: 'scripts/tracks/track.map.tpl.html',
+      controller: 'TrackController'
     });
 
     //.otherwise('/home');
@@ -68,6 +73,8 @@ angular.module('DayMap', ['ngRoute', 'ngCookies'])
 
      
    }
+
+       
 
   ]);
 
