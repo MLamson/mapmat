@@ -28,6 +28,8 @@
         // array of day objects
         $scope.days = response.results;
 
+
+
       });
 
         ////get day from list on page
@@ -38,37 +40,66 @@
 
         ////empty array to hold markers
         $scope.trackMarkers = [];
+
+        $scope.trackPoly = [];
+
+        
         ////object to hold current marker
         $scope.marker = {};
         ////variable needed to set id so idKey will have vaule.
         var i = 0;
         //////get array of tracks from day
         d.tracks.map( function (x) {
+          Date.parse(d.startTime);
+          console.log(d.startTime);
           ////get array of track from tracks
           x.track.map( function (y) {
             ////set marker value
             $scope.marker = {id: i, coords: {latitude: y.latitude, longitude: y.longitude}};
+
+            $scope.tracker = {latitude: y.latitude, longitude: y.longitude};
             //increment id var
             i++;
             ////push marker into trackMarkers model which is an array
             $scope.trackMarkers.push($scope.marker);
+            $scope.trackPoly.push($scope.tracker);
+            console.log();
           });
-        
+
+          /////////////////////////draw lines on the map//////////////////////////
+        $scope.polylines = [
+            {
+                id: 1,
+                path: $scope.trackPoly,
+                stroke: {
+                    color: '#6060FB',
+                    weight: 3
+                },
+                editable: true,
+                draggable: true,
+                geodesic: false,
+                visible: true,
+                icons: [{
+                    icon: {
+                       // path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+                    },
+                    // offset: '25px',
+                    // repeat: '50px'
+                }]
+            }
+        ];///////////////////////////End of drawing lines on map
+
+
+           // console.log($scope.trackMarkers, 'no way');
         });
 
-        console.log($scope.trackMarkers[0].coords, 'tup');
-        $scope.tempCenter = $scope.trackMarkers[0].coords;
-        $scope.map = {center: $scope.tempCenter};
-        console.log($scope.map);
 
-        $scope.map = {
-          center: {
-            latitude: 0,//$scope.trackMarkers[0].coords.latitude,
-            longitude: 0//$scope.trackMarkers[0].coords.longitude
-          },
-          zoom: 1,
-          bounds: {}
-        };
+        // console.log($scope.trackMarkers[0].coords, 'tup');
+        // $scope.tempCenter = $scope.trackMarkers[0].coords;
+        // $scope.map = {center: $scope.tempCenter};
+        // console.log($scope.map);
+
+       
 
       //   $scope.markerClicked = $scope.trackMarkers[5];
       //   console.log($scope.markerClicked.coords);
@@ -77,14 +108,7 @@
       };
 
          // Creates the polyline object
-          var polyline = new google.maps.Polyline({
-            map: map,
-            path: path,
-            strokeColor: '#0000FF',
-            strokeOpacity: 0.7,
-            strokeWeight: 1
-          });
-
+          
 
       // returns LatLng object
 // map.setCenter(latLng); // setCenter takes a LatLng object

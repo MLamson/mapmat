@@ -1,32 +1,34 @@
 
 
    
-  <div class="section no-pad-bot" id="index-banner">
+  <!-- <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-     <!--  <h1 class="header center orange-text">Starter Template</h1>
+      <h1 class="header center orange-text">Starter Template</h1>
       <div class="row center">
         <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
       </div>
       <div class="row center">
         <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div> -->
+      </div>
       <br><br>
 
     </div>
-  </div>
+  </div> -->
 
 
-  <div class="container">
-    <div class="section">
+  <!-- <div class="container">
+    <div class="section"> -->
  <!-- <div id="map"></div> -->
   <div id="map_canvas" ng-controller="MapController">
 
  <!-- Add map to page -->
       <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable='true' options="options" bounds='map.bounds'>
    <!-- Add markers to page -->
-        <ui-gmap-markers models="trackMarkers" idKey="id" coords="'coords'" icon="'icon'">
+        <ui-gmap-markers models="xtrackMarkers" idKey="id" coords="'coords'" icon="'icon'">
         </ui-gmap-markers>
+
+        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
 
     <!-- Add marker to test how data is needed -->
        
@@ -38,6 +40,7 @@
       <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
         <button ng-click="getDay(d)">Day</button>
         <a href="#/home/{{ d.objectId }}">{{ d.objectId }}</a>
+        <span>{{d.startTime.iso}}</span>
       </li>  
     </ul>
       <!--   Icon Section   -->
