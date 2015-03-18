@@ -12,23 +12,25 @@
 ////////get a array of all day objects
         $scope.days = [];
 
+
+        $scope.map = {
+          center: {
+            latitude: 0,
+            longitude: 0
+          },
+          zoom: 2,
+          draggable: false,
+        };
+        $scope.options = { scrollwheel: false };
+
        MapFactory.get().success( function (response) {
 
-        ///////Render Map on page with start location
-    $scope.map = {
-      center: {
-        latitude: 33.7550,
-        longitude: -84.3900
-      },
-      zoom: 1,
-      bounds: {}
-    };
-        
         
         // array of day objects
         $scope.days = response.results;
 
-
+        //////////render map with start location
+/////////////////////////////////////////////////////////////////////
 
       });
 
@@ -73,7 +75,7 @@
                 path: $scope.trackPoly,
                 stroke: {
                     color: '#6060FB',
-                    weight: 3
+                    weight: 4
                 },
                 editable: true,
                 draggable: true,
@@ -89,31 +91,44 @@
             }
         ];///////////////////////////End of drawing lines on map
 
+        }); 
 
-           // console.log($scope.trackMarkers, 'no way');
-        });
+      $scope.map = {
+          center: {
+            latitude: $scope.trackMarkers[1].coords.latitude,
+            longitude: $scope.trackMarkers[1].coords.longitude
+          },
+          zoom: 18,
+          draggable: false,
+          
+      };
 
-
-        // console.log($scope.trackMarkers[0].coords, 'tup');
-        // $scope.tempCenter = $scope.trackMarkers[0].coords;
-        // $scope.map = {center: $scope.tempCenter};
-        // console.log($scope.map);
-
-       
-
-      //   $scope.markerClicked = $scope.trackMarkers[5];
-      //   console.log($scope.markerClicked.coords);
-      // var latLng = $scope.markerClicked.getPosition(); 
        
       };
 
-         // Creates the polyline object
-          
 
-      // returns LatLng object
-// map.setCenter(latLng); // setCenter takes a LatLng object
+//////////////////////zoom to area of markers
 
-/////////////////////////////////////////////////////////////////////
+
+
+// $scope.click = function(marker) {
+   
+    // console.log('in click marker zoom');
+    //   $scope.map.setZoom(8);
+    //   $scope.map.setCenter(marker.getPosition());
+      
+    // };
+// $scope.map.addListener($scope.marker,'click',function() {
+//   map.setZoom(9);
+//   map.setCenter(marker.getPosition());
+//   });
+
+// google.maps.event.addListener(marker,'click',function() {
+//   map.setZoom(9);
+//   map.setCenter(marker.getPosition());
+//   });
+
+/////////////////////////////////////////////////////////////////////////////////
 
   }]);
   
