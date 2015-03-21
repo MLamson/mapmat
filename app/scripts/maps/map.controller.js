@@ -31,20 +31,19 @@
 
        $scope.days = [];
        MapFactory.get().success( function (response) {
-
-        
         // array of day objects
         $scope.days = response.results;
-
-        //////////render map with start location
-/////////////////////////////////////////////////////////////////////
-
       });
+
+
+      
 
         ////get day from list on page
         $scope.getDay = function (d) {
 
         var dayDate = moment(d.startTime.iso).format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+
 
         
         MapFactory.getD(d);
@@ -58,6 +57,57 @@
 
         $scope.trackPoly = [];
 
+          // ///////get photos tied to day
+          $scope.getPhotos = function (p) {
+            MapFactory.getP(p).success( function (response) {
+              $scope.photos = response;
+              console.log($scope.photos.image.url);
+            });
+           
+          };
+          $scope.getPhotos(d.photos);
+
+/////////////////////////////////////////////////////////////////////
+//////////getting text, venue, and stats from day
+
+        /////get text field
+        //  $scope.getText = function (t) {
+        //   MapFactory.getT(t).success( function (response) {
+        //     // array of day objects
+        //     $scope.dayText = response;
+        //     //console.log($scope.photos.image.url);
+        //   });
+         
+        // };
+
+         /////get venue field
+        //  $scope.getVenue = function (v) {
+        //   MapFactory.getV(v).success( function (response) {
+        //     // array of day objects
+        //     $scope.dayVenue = response;
+        //     //console.log($scope.photos.image.url);
+        //   });
+         
+        // };
+
+         /////get stats field
+        //  $scope.getStats = function (s) {
+        //  // MapFactory.getS(s).success( function (response) {
+        //     // array of day objects
+        //   //  $scope.dayStats = response;
+        //     //console.log($scope.photos.image.url);
+        //   //});
+         
+        // };
+        // $scope.getText(d.text);
+        // $scope.getVenue(d.venues);
+        // $scope.getStats(d.stats);
+
+        // console.log(d.text);
+        // console.log(d.venues);
+        // console.log(d.stats);
+
+//////////////////////////////////////////////////////////////////////////
         
         ////object to hold current marker
         $scope.marker = {};
@@ -65,6 +115,9 @@
         var i = 0;
         //////get array of tracks from day
         d.tracks.map( function (x) {
+
+
+
           // Date.parse(d.startTime);
           
           // var dayDate = moment(d.startTime.iso).format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -85,6 +138,8 @@
             // console.log(a);
             // $scope.startFinishMarkers.push($scope.trackMarkers[0]);
             // $scope.startFinishMarkers.push($scope.trackMarkers[a]);
+
+
           
           });
           //////////////set markers to only first and last point
@@ -92,6 +147,9 @@
             a--;
             $scope.startFinishMarkers.push($scope.trackMarkers[0]);
             $scope.startFinishMarkers.push($scope.trackMarkers[a]);
+
+
+
 
           /////////////////////////draw lines on the map//////////////////////////
         $scope.polylines = [
@@ -128,10 +186,20 @@
           
       };
 
-       
+      
       };
 
 /////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////
+////////For create map template
+
+
+ var events = {
+          places_changed: function (searchBox) {}
+        };
+        $scope.searchbox = { template:'searchbox.tpl.html', events:events};
 
   }]);
   

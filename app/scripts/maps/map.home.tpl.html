@@ -24,17 +24,26 @@
       <div class="daysList">
        <p>Choose Day to View</p>
         <ul class="days">
-          <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
-          <button ng-click="getDay(d)">{{d.startTime.iso | date : 'medium' }}</button>
+          <li ng-repeat="d in days | orderBy: '-startTime.iso' ">
+          <button ng-click="getDay(d)">{{d.startTime.iso | date : 'medium'}}{{d.venue}}</button>
          </li>  
         </ul>
       </div>
 
       <div class="photoList">
-       <p>Choose Day to View</p>
+       <p>Photos From Your Day</p>
         <ul class="photos">
-          <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
-          <button ng-click="getDay(d)">{{d.startTime.iso | date : 'medium' }}</button>
+          <li>
+          <img class="dayPhotos" src="{{photos.image.url}}">
+         </li>  
+        </ul>
+      </div>
+
+      <div class="textsList">
+       <p>Text From Your Day</p>
+        <ul class="tests">
+          <!-- <li ng-repeat="d in days | orderBy: '-startTime.iso' "> -->
+          <!-- <button ng-click="getDay(d)">{{d.startTime.iso | date : 'medium' }}</button> -->
          </li>  
         </ul>
       </div>

@@ -1,15 +1,27 @@
 <div ng-controller="MapController"></div>
   <div id="map_canvas">
-  <p>{{ map }}</p>
+
+  <script type="text/ng-template" id="searchbox.tpl.html">
+        <input type="text" placeholder="Search Box">
+    </script>
+
+    
+
+  <!-- <p>{{ map }}</p> -->
 
  <!-- Add map to page -->
       <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable='false' options="options" bounds='map.bounds'>
    <!-- Add markers to page -->
-        <ui-gmap-markers models="trackMarkers" idKey="id" coords="'coords'" icon="'icon'">
+       <!--  <ui-gmap-markers models="trackMarkers" idKey="id" coords="'coords'" icon="'icon'">
         </ui-gmap-markers>
 
 
-        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
+        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline> -->
+       
+
+        <ui-gmap-search-box options="searchbox.options" template="searchbox.template"
+                            events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
+
 
     <!-- Add marker to test how data is needed -->
        

@@ -29,7 +29,6 @@
           <li><a ng-show="loggedin" href="#/home">Share Day</a></li>
           <li><a ng-show="loggedin" href="#/photos">Photos</a></li>
           <li><a ng-show="loggedin" href="#/mobile">Mobile</a></li>
-       
           <li><a ng-hide="loggedin" href="#/login">Login</a></li>
           <li><a ng-hide="loggedin" href="#/register">Register</a></li>
           <li><a ng-show="loggedin" href="#/" ng-click="logout()">Logout</a></li>
@@ -100,6 +99,10 @@
   
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+
+   <!--  <script src='http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language=en&v=3.17'></script> -->
+   <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>
+
 
     <script src="../bower_components/moment/moment.js"></script>
     <script src="../bower_components/jquery/dist/jquery.js"></script>
