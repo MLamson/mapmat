@@ -43,6 +43,7 @@
           $cookieStore.put('currentUser', res.data);
         });
         $location.path('/home');
+        //$location.reload(true);
         
       };
 
@@ -51,9 +52,12 @@
         $cookieStore.remove('currentUser');
         console.log('in logoutUser function UserFactory');
         $location.path('/');
+        //$location.reload(true);
         
       };
-  
+    
+      
+
       return {
         register : addUser, 
         login : loginUser,

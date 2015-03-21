@@ -1,16 +1,11 @@
-
-
-   
-  
-
- <div ng-controller="MapController"></div>
+<div ng-controller="MapController"></div>
   <div id="map_canvas">
-  <!-- <p>{{ map }}</p> -->
+  <p>{{ map }}</p>
 
  <!-- Add map to page -->
       <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable='false' options="options" bounds='map.bounds'>
    <!-- Add markers to page -->
-        <ui-gmap-markers models="startFinishMarkers" idKey="id" coords="'coords'" icon="'icon'">
+        <ui-gmap-markers models="trackMarkers" idKey="id" coords="'coords'" icon="'icon'">
         </ui-gmap-markers>
 
 
@@ -21,25 +16,14 @@
      </ui-gmap-google-map>
    
   </div>
-      <div class="daysList">
-       <p>Choose Day to View</p>
-        <ul class="days">
-          <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
-          <button ng-click="getDay(d)">{{d.startTime.iso | date : 'medium' }}</button>
-         </li>  
-        </ul>
-      </div>
 
-      <div class="photoList">
-       <p>Choose Day to View</p>
-        <ul class="photos">
-          <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
-          <button ng-click="getDay(d)">{{d.startTime.iso | date : 'medium' }}</button>
-         </li>  
-        </ul>
-      </div>
-
-
+   <!--  <ul class="days">
+      <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
+        <button ng-click="getDay(d)">Day</button>
+        <a href="#/home/{{ d.objectId }}">{{ d.objectId }}</a>
+        <span>{{d.startTime.iso}}</span>
+      </li>  
+    </ul> -->
 
   </div>
       <!--   Icon Section   -->
@@ -79,5 +63,3 @@
 
     </div>
   </div>
-
-

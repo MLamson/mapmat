@@ -8,10 +8,12 @@
 
     function ($scope, MapFactory, $location, uiGmapGoogleMapApi) {
 
-///////////////////////////////////////////////////////////////////
-////////get a array of all day objects
-        $scope.days = [];
+          //moment().format();
 
+
+
+       
+//////////initial map//////////////
 
         $scope.map = {
           center: {
@@ -23,6 +25,11 @@
         };
         $scope.options = { scrollwheel: false };
 
+        ///////////////////////////////////////////////////////////////////
+////////get a array of all day objects
+
+
+       $scope.days = [];
        MapFactory.get().success( function (response) {
 
         
@@ -36,12 +43,18 @@
 
         ////get day from list on page
         $scope.getDay = function (d) {
+
+        var dayDate = moment(d.startTime.iso).format("dddd, MMMM Do YYYY, h:mm:ss a");
+
         
         MapFactory.getD(d);
-
+        // moment().format();
+        // console.log('utu');
 
         ////empty array to hold markers
         $scope.trackMarkers = [];
+
+        $scope.startFinishMarkers = [];
 
         $scope.trackPoly = [];
 
@@ -52,8 +65,9 @@
         var i = 0;
         //////get array of tracks from day
         d.tracks.map( function (x) {
-          Date.parse(d.startTime);
-          console.log(d.startTime);
+          // Date.parse(d.startTime);
+          
+          // var dayDate = moment(d.startTime.iso).format("dddd, MMMM Do YYYY, h:mm:ss a");
           ////get array of track from tracks
           x.track.map( function (y) {
             ////set marker value
@@ -63,10 +77,21 @@
             //increment id var
             i++;
             ////push marker into trackMarkers model which is an array
+
+            if($scope.marker)
             $scope.trackMarkers.push($scope.marker);
             $scope.trackPoly.push($scope.tracker);
-            console.log();
+            // var a = $scope.trackMarkers.length;
+            // console.log(a);
+            // $scope.startFinishMarkers.push($scope.trackMarkers[0]);
+            // $scope.startFinishMarkers.push($scope.trackMarkers[a]);
+          
           });
+          //////////////set markers to only first and last point
+            var a = $scope.trackMarkers.length;
+            a--;
+            $scope.startFinishMarkers.push($scope.trackMarkers[0]);
+            $scope.startFinishMarkers.push($scope.trackMarkers[a]);
 
           /////////////////////////draw lines on the map//////////////////////////
         $scope.polylines = [
@@ -105,28 +130,6 @@
 
        
       };
-
-
-//////////////////////zoom to area of markers
-
-
-
-// $scope.click = function(marker) {
-   
-    // console.log('in click marker zoom');
-    //   $scope.map.setZoom(8);
-    //   $scope.map.setCenter(marker.getPosition());
-      
-    // };
-// $scope.map.addListener($scope.marker,'click',function() {
-//   map.setZoom(9);
-//   map.setCenter(marker.getPosition());
-//   });
-
-// google.maps.event.addListener(marker,'click',function() {
-//   map.setZoom(9);
-//   map.setCenter(marker.getPosition());
-//   });
 
 /////////////////////////////////////////////////////////////////////////////////
 

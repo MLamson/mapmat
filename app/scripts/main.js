@@ -38,11 +38,20 @@ angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps',])
       controller: 'MapController'
     })
 
-    .when('/home/:id', {
+    .when('/create', {
+      templateUrl: 'scripts/maps/map.create.tpl.html',
+      controller: 'MapController'
+    })
+
+    .when('/photos', {
       templateUrl: 'scripts/tracks/track.map.tpl.html',
       controller: 'TrackController'
-    });
+    })
 
+    .when('/mobile', {
+      templateUrl: 'scripts/tracks/track.mobile.tpl.html',
+      controller: 'TrackController'
+    });
     //.otherwise('/home');
 
 	}])

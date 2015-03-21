@@ -22,3 +22,49 @@ body {
 	width: 64px;
 }
 
+.days button{
+	margin-top: 5px;
+	background-color: #6BDD8F;
+	width: 100%;
+}
+
+.daysList {
+	width: 25%;
+	height: 235px;
+	overflow-y: scroll;
+	background-color: #EAE9D9;
+	margin-top: 10px;
+	float: left;
+	p {
+		text-align: center;
+	}
+} ///end daysList
+
+.photoList {
+	width: 50%;
+	height: 235px;
+	overflow-y: scroll;
+	margin-top: 10px;
+	padding-left: 20px;
+	background-color: #EAE9D9;
+
+}
+
+
+// for keeping scrollbar visable 
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+
+
+
+
+
+
