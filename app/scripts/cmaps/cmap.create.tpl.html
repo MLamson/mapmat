@@ -1,54 +1,42 @@
-
-
-   
-  
-
- <div ng-controller="MapController"></div>
+<div ng-controller="CMapController"></div>
   <div id="map_canvas">
+
+  <script type="text/ng-template" id="searchbox.tpl.html">
+        <input type="text" placeholder="Search Box">
+    </script>
+
+    
+
   <!-- <p>{{ map }}</p> -->
 
  <!-- Add map to page -->
       <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable='false' options="options" bounds='map.bounds'>
-   <!-- Add markers to page -->
-        <ui-gmap-markers models="startFinishMarkers" idKey="id" coords="'coords'" icon="'icon'">
-        </ui-gmap-markers>
 
+    <!--   <div class="col-xs-12 col-md-12" id="searchBoxParent">
+  <script type="text/ng-template" id="searchBox.template.html">
+    <input type="text" ng-model="address" placeholder="Search Address" required />
+  </script>
+</div> -->
+       
 
-        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
+        <ui-gmap-search-box id="searchBoxParent" options="searchbox.options" template="searchbox.template" events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
+
+        <ui-gmap-drawing-manager options="drawingManagerOptions" control="drawingManagerControl"></ui-gmap-drawing-manager>
+
 
     <!-- Add marker to test how data is needed -->
        
      </ui-gmap-google-map>
    
   </div>
-      <div class="daysList">
-       <p>Choose Day to View</p>
-        <ul class="days">
-          <li ng-repeat="d in days | orderBy: '-startTime.iso' ">
-          <button ng-click="getDay(d)">{{d.startTime.iso | date : 'medium'}}</button>
-         </li>  
-        </ul>
-      </div>
 
-      <div class="photoList">
-       <p>Photos From Your Day</p>
-        <ul class="photos">
-          <li>
-          <img class="dayPhotos" src="{{photos.image.url}}">
-         </li>  
-        </ul>
-      </div>
-
-      <div class="textsList">
-       <p>Text From Your Day</p>
-        <ul class="tests">
-          <!-- <li ng-repeat="d in days | orderBy: '-startTime.iso' "> -->
-          <!-- <button ng-click="getDay(d)">{{d.startTime.iso | date : 'medium' }}</button> -->
-         </li>  
-        </ul>
-      </div>
-
-
+   <!--  <ul class="days">
+      <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
+        <button ng-click="getDay(d)">Day</button>
+        <a href="#/home/{{ d.objectId }}">{{ d.objectId }}</a>
+        <span>{{d.startTime.iso}}</span>
+      </li>  
+    </ul> -->
 
   </div>
       <!--   Icon Section   -->
@@ -88,5 +76,3 @@
 
     </div>
   </div>
-
-

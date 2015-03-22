@@ -39,8 +39,8 @@ angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps',])
     })
 
     .when('/create', {
-      templateUrl: 'scripts/maps/map.create.tpl.html',
-      controller: 'MapController'
+      templateUrl: 'scripts/cmaps/cmap.create.tpl.html',
+      controller: 'CMapController'
     })
 
     .when('/photos', {
@@ -56,9 +56,9 @@ angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps',])
 
 	}])
 
-     .run([ '$rootScope', 'UserFactory', 'PARSE', 'MapFactory', '$location',
+     .run([ '$rootScope', 'UserFactory', 'PARSE', 'MapFactory', '$location', 'CMapFactory',
 
-    function ($rootScope, UserFactory, PARSE, MapFactory, $location) {
+    function ($rootScope, UserFactory, PARSE, MapFactory, $location, CMapFactory) {
 
       $rootScope.$on('$routeChangeStart', function () {
         
