@@ -1,7 +1,7 @@
 ;(function (){
 
 
-angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps','ngMap',])
+angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps','ngMap'])
 
 	.constant('PARSE', {
 		URL: 'https://api.parse.com/1/',

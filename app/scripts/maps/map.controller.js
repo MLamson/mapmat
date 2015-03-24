@@ -66,7 +66,6 @@
           $scope.getPhotos = function (p) {
             MapFactory.getP(p).success( function (response) {
               $scope.photos = response;
-              console.log($scope.photos.image.url);
             });
            
           };
@@ -183,8 +182,8 @@
 
       $scope.map = {
           center: {
-            latitude: $scope.trackMarkers[1].coords.latitude,
-            longitude: $scope.trackMarkers[1].coords.longitude
+            latitude: $scope.trackMarkers[0].coords.latitude,
+            longitude: $scope.trackMarkers[0].coords.longitude
           },
           zoom: 18,
           draggable: false,

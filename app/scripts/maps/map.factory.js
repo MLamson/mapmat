@@ -25,9 +25,20 @@
       // Get Days data from Parse
 
       var getAllDays = function () {
-        return $http.get(PARSE.URL + 'classes/Day', {
+        return $http({
           headers: PARSE.CONFIG.headers,
-          cache: true
+          url: PARSE.URL + 'classes/Day/',
+          method: 'GET',
+          params: {
+            //'where': {"_User":"b1vQSsT7Up"}
+            'where': {
+              user: {
+                __type: 'Pointer',
+                className: '_User',
+                objectId: "b1vQSsT7Up",
+              }
+            }
+          }
         });
       };
 

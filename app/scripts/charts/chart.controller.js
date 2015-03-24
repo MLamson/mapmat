@@ -8,11 +8,21 @@
 
     function ($scope, ChartFactory, $location) {
 
-     var ctx = document.getElementById("myBarChart").getContext("2d");
 
-     var myBarChart = new Chart(ctx).Bar(data, options);
+             ///////////////////////////////////////////////////////////////////
+////////get a array of all day objects tied to current user
 
-     var data = {
+
+       $scope.userDays = [];
+       ChartFactory.get().success( function (response) {
+        // array of day objects
+        console.log('uerDays', $scope.userDays);
+        $scope.userDays = response.results;
+
+      });
+
+//////////////// chartjss
+var data = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
         {
@@ -33,9 +43,17 @@
         }
     ]
 };
-    
 
-  }]);
+
+// Get the context of the canvas element we want to select
+      // Get context with jQuery - using jQuery's .get() method.
+      var ctx = $("#myBarChart").get(0).getContext("2d");
+      // This will get the first returned node in the jQuery collection.
+      var myBarChart = new Chart(ctx).Bar(data);
+
+    }]);
+
+  
   
 
 }());

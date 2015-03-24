@@ -2,7 +2,15 @@
   
   <p>Blah Blah Blah</p>
 
-   <canvas id="myBarChart" width="400" height="400"></canvas>
+  <canvas id="myBarChart" width="400" height="400"></canvas>
+  <ul class="userDays">{{userDays}}
+
+
+  <li ng-repeat="u in userDays | orderBy: '-startTime.iso' "></ul>
+
+
+  
+
 
   </div>
       <!--   Icon Section   -->
