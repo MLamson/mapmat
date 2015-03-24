@@ -4,21 +4,14 @@
 
   angular.module('DayMap')
 
-  .factory('MapFactory', ['$http', 'PARSE', '$cookieStore', '$location','uiGmapGoogleMapApi', 
+  .factory('ChartFactory', ['$http', 'PARSE', '$cookieStore', '$location',
 
-    function ($http, PARSE, $cookieStore, $location, uiGmapGoogleMapApi) {
+    function ($http, PARSE, $cookieStore, $location) {
 
       
 
       var getTheDay = function (d) {
-        //console.log(d, 'in get day function');
-        ////loop over d.tracks getting mode and track
-//////////////////////////////////////////////////////////////////
-///////loop through object to get mode
-        // console.log(d.tracks, 'd tracks');
-      
-///////for each mode loop through tracks to get lat long
-///////create marker for each with idKey
+    
 
       };
 

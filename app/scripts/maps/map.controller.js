@@ -35,6 +35,11 @@
         $scope.days = response.results;
       });
 
+       /////get just users who is logged in days
+       $scope.days.map(function () {
+
+
+       });
 
       
 

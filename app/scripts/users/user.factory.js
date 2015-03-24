@@ -29,7 +29,7 @@
           }
         );
       };
-
+     
       // Log in a User
       var loginUser = function (userObj) {
 
@@ -39,7 +39,7 @@
           headers: PARSE.CONFIG.headers,
           params: userObj
         }).then (function (res) {
-          
+          console.log(res.data.objectId);
           $cookieStore.put('currentUser', res.data);
         });
         $location.path('/home');

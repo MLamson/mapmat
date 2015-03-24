@@ -22,6 +22,7 @@
       // Login Method
       $scope.loginUser = function (userObj) {
         UserFactory.login(userObj);
+        console.log(userObj);
       };
     
     }

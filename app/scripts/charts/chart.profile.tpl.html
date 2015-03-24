@@ -1,41 +1,8 @@
-<div ng-controller="MapController"></div>
-  <div id="map_canvas">
+<div ng-controller="ChartController"></div>
+  
+  <p>Blah Blah Blah</p>
 
-  <script type="text/ng-template" id="searchbox.tpl.html">
-        <input type="text" placeholder="Search Box">
-    </script>
-
-    
-
-  <!-- <p>{{ map }}</p> -->
-
- <!-- Add map to page -->
-      <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable='false' options="options" bounds='map.bounds'>
-   <!-- Add markers to page -->
-       <!--  <ui-gmap-markers models="trackMarkers" idKey="id" coords="'coords'" icon="'icon'">
-        </ui-gmap-markers>
-
-
-        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline> -->
-       
-
-        <ui-gmap-search-box options="searchbox.options" template="searchbox.template"
-                            events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
-
-
-    <!-- Add marker to test how data is needed -->
-       
-     </ui-gmap-google-map>
-   
-  </div>
-
-   <!--  <ul class="days">
-      <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
-        <button ng-click="getDay(d)">Day</button>
-        <a href="#/home/{{ d.objectId }}">{{ d.objectId }}</a>
-        <span>{{d.startTime.iso}}</span>
-      </li>  
-    </ul> -->
+   <canvas id="myBarChart" width="400" height="400"></canvas>
 
   </div>
       <!--   Icon Section   -->

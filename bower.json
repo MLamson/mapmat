@@ -13,6 +13,7 @@
     "angular-google-maps": "~2.0.16",
     "google-map": "GoogleWebComponents/google-map#~0.4.2",
     "moment": "~2.9.0",
-    "ngmap": "~1.4.2"
+    "ngmap": "~1.4.2",
+    "Chart.js": "~1.0.2"
   }
 }

@@ -1,42 +1,21 @@
 <div ng-controller="CMapController"></div>
-  <div id="map_canvas">
+ 
 
-  <script type="text/ng-template" id="searchbox.tpl.html">
-        <input type="text" placeholder="Search Box">
-    </script>
-
-    
-
-  <!-- <p>{{ map }}</p> -->
-
- <!-- Add map to page -->
-      <ui-gmap-google-map center='map.center' zoom='map.zoom' draggable='false' options="options" bounds='map.bounds'>
-
-    <!--   <div class="col-xs-12 col-md-12" id="searchBoxParent">
-  <script type="text/ng-template" id="searchBox.template.html">
-    <input type="text" ng-model="address" placeholder="Search Address" required />
-  </script>
-</div> -->
        
+      <div>
+      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 
-        <ui-gmap-search-box id="searchBoxParent" options="searchbox.options" template="searchbox.template" events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
+      <map id="map-canvas" on-click="centerOnMe()" center="current-location" zoom="6">
+        <info-window position="current-location" visible="true">
+          <span>Loation found using HTML5.</span>
+        </info-window>
 
-        <ui-gmap-drawing-manager options="drawingManagerOptions" control="drawingManagerControl"></ui-gmap-drawing-manager>
+      </map>
 
 
-    <!-- Add marker to test how data is needed -->
-       
-     </ui-gmap-google-map>
-   
-  </div>
 
-   <!--  <ul class="days">
-      <li ng-repeat="d in days | filter:searchtext | orderBy: 'startTime' ">
-        <button ng-click="getDay(d)">Day</button>
-        <a href="#/home/{{ d.objectId }}">{{ d.objectId }}</a>
-        <span>{{d.startTime.iso}}</span>
-      </li>  
-    </ul> -->
+    </div>
+
 
   </div>
       <!--   Icon Section   -->

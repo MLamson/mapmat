@@ -1,7 +1,7 @@
 ;(function (){
 
 
-angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps',])
+angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps','ngMap',])
 
 	.constant('PARSE', {
 		URL: 'https://api.parse.com/1/',
@@ -48,6 +48,11 @@ angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps',])
       controller: 'TrackController'
     })
 
+    .when('/profile', {
+      templateUrl: 'scripts/charts/chart.profile.tpl.html',
+      controller: 'ChartController'
+    })
+
     .when('/mobile', {
       templateUrl: 'scripts/tracks/track.mobile.tpl.html',
       controller: 'TrackController'
@@ -56,9 +61,9 @@ angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps',])
 
 	}])
 
-     .run([ '$rootScope', 'UserFactory', 'PARSE', 'MapFactory', '$location', 'CMapFactory',
+     .run([ '$rootScope', 'UserFactory', 'PARSE', 'MapFactory', '$location',
 
-    function ($rootScope, UserFactory, PARSE, MapFactory, $location, CMapFactory) {
+    function ($rootScope, UserFactory, PARSE, MapFactory, $location) {
 
       $rootScope.$on('$routeChangeStart', function () {
         

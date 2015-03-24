@@ -8,52 +8,78 @@
 
     function ($scope, CMapFactory, $location, uiGmapGoogleMapApi) {
 
-          //moment().format();
+      $scope.centerOnMe= function(){
+      $scope.positions = [];
+
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      $scope.positions.push({lat: pos.k,lng: pos.B});
+      console.log(pos);
+      $scope.map.setCenter(pos);
+
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+      var directionsService = new google.maps.DirectionsService();
+
+
+      console.log($scope.map);
+      directionsDisplay.setMap($scope.map);
+
+      function calcRoute() {
+        var start = "37.891586,-4.7844853";
+        var end = pos.k + "," + pos.B;
 
 
 
-       
-//////////initial map//////////////
-$scope.map = { control: {}, center: { latitude: 37.70, longitude: -122.344 }, zoom: 9, refresh: {}};
+        var request = {
+          origin: start,
+          destination: end,
+          optimizeWaypoints: true,
+          travelMode: google.maps.TravelMode.DRIVING
+        };
 
-function placeToMarker(searchBox, id) {
+        directionsService.route(request, function(response, status) {
+          console.log('before status');
+          console.log(status, 'status');
+          if (status == google.maps.DirectionsStatus.OK) {
 
-  var place = searchBox.getPlaces();
-  if (!place || place == 'undefined' || place.length == 0) {
-    return;
-  }
+            directionsDisplay.setDirections(response);            
+            console.log('enter!');  
+          }
+    });
 
-  var marker = {
-    id: id,
-    place_id: place[0].place_id,
-    name: place[0].name,
-    address: place[0].formatted_address,
-    latitude: place[0].geometry.location.lat(),
-    longitude: place[0].geometry.location.lng(),
-    latlng: place[0].geometry.location.lat() + ',' + place[0].geometry.location.lng()
-  };
-// push your markers into the $scope.map.markers array
-if (!$scope.map.markers) {
-    $scope.map.markers = [];
-  }
 
-// THIS IS THE KEY TO RECENTER/REFRESH THE MAP, to your question
-$scope.map.control.refresh({latitude: marker.latitude, longitude: marker.longitude});
+      }
 
-// the following defines the SearchBox on your Controller; events call placeToMarker function above
-var searchBoxEvents = {
-  places_changed: function (searchBox) {
-    placeToMarker(searchBox, id);
-  }
+      calcRoute();
+
+
+    });
+
 };
 
-// this is defined on the Controller, as well. This specifies which template searchBoxEvents should match to; note the parentdiv
-  $scope.searchBox = { template:'searchBox.template.html', events:searchBoxEvents, parentdiv: 'searchBoxParent'};
+      ////polyline on map  Not the best way for directions
+    //   var poly = new google.maps.Polyline({
+    //   strokeColor: '#000000',
+    //   strokeOpacity: 1.0,
+    //   strokeWeight: 3
+    // });
+    // $scope.$on('mapInitialized', function(evt, map) {
+    //   poly.setMap(map);
+    // });
+    // $scope.addMarkerAndPath = function(event) {
+    //   var path = poly.getPath();
+    //   var marker = new google.maps.Marker({
+    //     position: event.latLng, 
+    //     title: "#"+ path.getLength(), 
+    //     map: $scope.map
+    //   });
+    //   path.push(event.latLng);
+    // };
 
-// in your HTML, declare where you want the searchBox. parentdiv: 'searchBoxParent' above looks for the id="searchBoxParent" in HTML
 
-  }
 
+   
   }]);
   
 
