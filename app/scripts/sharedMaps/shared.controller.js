@@ -4,9 +4,9 @@
 
   angular.module('DayMap')
 
-  .controller('MapController', ['$scope', 'MapFactory', '$location','uiGmapGoogleMapApi',
+  .controller('SharedController', ['$scope', 'SharedFactory', '$location','uiGmapGoogleMapApi',
 
-    function ($scope, MapFactory, $location, uiGmapGoogleMapApi) {
+    function ($scope, SharedFactory, $location, uiGmapGoogleMapApi) {
 
           //moment().format();
 
@@ -30,7 +30,7 @@
 
 
        $scope.days = [];
-       MapFactory.get().success( function (response) {
+       SharedFactory.get().success( function (response) {
         // array of day objects
         $scope.days = response.results;
       });
@@ -44,7 +44,7 @@
 
 
         
-        MapFactory.getD(d);
+        SharedFactory.getD(d);
         // moment().format();
         // console.log('utu');
 
@@ -57,7 +57,7 @@
 
           // ///////get photos tied to day
           $scope.getPhotos = function (p) {
-            MapFactory.getP(p).success( function (response) {
+            SharedFactory.getP(p).success( function (response) {
               $scope.photos = response;
             });
            

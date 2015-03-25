@@ -38,9 +38,9 @@ angular.module('DayMap', ['ngRoute', 'ngCookies', 'uiGmapgoogle-maps','ngMap'])
       controller: 'MapController'
     })
 
-    .when('/create', {
-      templateUrl: 'scripts/cmaps/cmap.create.tpl.html',
-      controller: 'CMapController'
+    .when('/shared', {
+      templateUrl: 'scripts/sharedMaps/shared.home.tpl.html',
+      controller: 'SharedController'
     })
 
     .when('/photos', {

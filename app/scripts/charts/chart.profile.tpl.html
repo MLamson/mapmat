@@ -1,9 +1,21 @@
 <div ng-controller="ChartController"></div>
-  
-  <p>Blah Blah Blah</p>
+ 
+ <div class="chartBorder"> 
+  <p>Your Miles per Track vs Average of Others.</p>
 
   <canvas id="myBarChart" width="400" height="400"></canvas>
-  <ul class="userDays">{{userDays}}
+
+  <p>Last 5 Days.</p>
+  </div>
+
+  <div class="chartBorder2"> 
+  <p>Total Tracks per Day All Users</p>
+
+  <canvas id="myBarChart2" width="400" height="400" "padding-left: 10px;"></canvas>
+
+  <p>Last 7 Days.</p>
+  </div>
+  <ul class="userDays"><!-- {{userDays}} -->
 
 
   <li ng-repeat="u in userDays | orderBy: '-startTime.iso' "></ul>

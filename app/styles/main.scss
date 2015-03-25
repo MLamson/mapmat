@@ -8,7 +8,6 @@ body {
 
   
 }
-//background-image: url("../images/background.png");
 
 .angular-google-map-container { 
 	height: 400px; width: auto;
@@ -19,13 +18,17 @@ body {
 }
 
 .nav-wrapper img {
-	width: 64px;
+	width: 54px;
 }
 
-.days button{
+button{
+  border-radius: 5px;
+  border: 0px;
+  color: white
 	margin-top: 5px;
 	background-color: #6BDD8F;
 	width: 100%;
+  font-weight: 200;
 }
 
 .daysList {
@@ -65,12 +68,35 @@ body {
 	width: 100%;
 }
 
-#searchBoxCreate {
-	width: 10%;
+.chartBorder  {
+	border: 5px solid #0E8EB5;
+	width: 450px;
+	padding-left: 10px;
+	float: left;
 }
 
+.chartBorder2  {
+	border: 5px solid #0E8EB5;
+	width: 450px;
+	padding-left: 10px;
+  float: left;
+	
+}
 
-// for keeping scrollbar visable 
+#myBarChart2 {
+  margin-left: 10px;
+}
+
+.navBarMain {
+	background-color: RGBA(14, 142, 181, 1);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.pageFooterMain {
+	background-color: RGBA(224, 145, 61, 1);
+}
+
+ //for keeping scrollbar visable 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
@@ -85,7 +111,7 @@ body {
 html, body, #map-canvas {
         height: 100%;
         margin: 0px;
-        padding: 0px
+        padding: 0px;
       }
       .controls {
         margin-top: 16px;
