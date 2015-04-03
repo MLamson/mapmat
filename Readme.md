@@ -4,13 +4,13 @@ Front end of application that is used on mobile devices to map your day.
 
 ## Libraries
 
-Angular
-Angular Routes
-Angular Cookies
-Material.css
-Sass
-Angular Maps
-Chart.js
+* Angular
+* Angular Routes
+* Angular Cookies
+* Material.css
+* Sass
+* Angular Maps
+* Chart.js
 
 
 
